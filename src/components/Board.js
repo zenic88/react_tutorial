@@ -8,28 +8,26 @@ class Board extends Component {
             value={this.props.squares[i]}
             click={i === this.props.click}
             onClick={() => this.props.onClick(i, x, y)}
+            key={i}
         />
     );
   }
 
   render() {
+    let index = 0;
     return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0, 1, 1)}
-            {this.renderSquare(1, 1, 2)}
-            {this.renderSquare(2, 1, 3)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3, 2, 1)}
-            {this.renderSquare(4, 2, 2)}
-            {this.renderSquare(5, 2, 3)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6, 3, 1)}
-            {this.renderSquare(7, 3, 2)}
-            {this.renderSquare(8, 3, 3)}
-          </div>
+          {Array(3).fill(Array(3).fill(null)).map((arr, i) => {
+            return (
+                <div className="board-row" key={i}>
+                  {arr.map((value, j) => {
+                    return (
+                        this.renderSquare(index++, i + 1, j + 1)
+                    );
+                  })}
+                </div>
+            );
+          })}
         </div>
     );
   }

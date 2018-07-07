@@ -41,11 +41,11 @@ class Game extends Component {
     });
   }
 
-  jumpTo(step) {
+  jumpTo(step, order) {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0,
-      click: step - 1
+      click: order
     });
   }
 
@@ -54,12 +54,13 @@ class Game extends Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
+      const order = step.order[move - 1];
       const desc = move ?
-          'Go to move #' + move + ' ' + step.coordinates[step.order[move - 1]] :
+          'Go to move #' + move + ' ' + step.coordinates[order] :
           'Go to game start';
       return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button onClick={() => this.jumpTo(move, order)}>{desc}</button>
           </li>
       );
     });
