@@ -13,6 +13,7 @@ class Game extends Component {
       }],
       xIsNext: true,
       stepNumber: 0,
+      click: -1
     };
   }
 
@@ -36,6 +37,7 @@ class Game extends Component {
       }]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
+      click: i
     });
   }
 
@@ -71,6 +73,7 @@ class Game extends Component {
           <div className="game-board">
             <Board
                 squares={current.squares}
+                click={this.state.click}
                 onClick={(i, x, y) => this.handleClick(i, x, y)}
             />
           </div>
