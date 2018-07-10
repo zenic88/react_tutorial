@@ -17,17 +17,18 @@ class Board extends Component {
     let index = 0;
     return (
         <div>
-          {Array(3).fill(Array(3).fill(null)).map((arr, i) => {
-            return (
-                <div className="board-row" key={i}>
-                  {arr.map((value, j) => {
-                    return (
-                        this.renderSquare(index++, i + 1, j + 1)
-                    );
-                  })}
-                </div>
-            );
-          })}
+          {Array(this.props.size).fill(Array(this.props.size).fill(null)).map(
+              (arr, i) => {
+                return (
+                    <div className="board-row" key={i}>
+                      {arr.map((value, j) => {
+                        return (
+                            this.renderSquare(index++, i + 1, j + 1)
+                        );
+                      })}
+                    </div>
+                );
+              })}
         </div>
     );
   }

@@ -76,6 +76,7 @@ class Game extends Component {
             <Board
                 squares={current.squares}
                 click={this.state.click}
+                size={3}
                 onClick={(i, x, y) => this.handleClick(i, x, y)}
             />
           </div>
